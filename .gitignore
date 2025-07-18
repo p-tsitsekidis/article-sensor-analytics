@@ -1,0 +1,24 @@
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+env/
+thesis_env/
+
+# Sensor CSV data
+csv_readings/
+
+# Environment variables
+.env
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.pdf
