@@ -19,8 +19,11 @@ from flask import Flask, request, jsonify
 from pymongo import MongoClient
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+
+load_dotenv()
 
 # MongoDB configuration
 MONGO_URI = os.environ.get("MONGO_URI", "mongodb://localhost:27017")
@@ -560,4 +563,4 @@ def index():
     return jsonify({'message': 'Welcome to the API!'})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5050)
