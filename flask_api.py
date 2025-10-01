@@ -20,8 +20,11 @@ from pymongo import MongoClient
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 load_dotenv()
 
@@ -72,6 +75,10 @@ SPECIAL_WEATHER_TAG = "Καιρικά και Φυσικά Φαινόμενα"
 
 
 # ================================ HELPERS ======================================
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 def parse_grafana_timestamp(ts_ms_string):
     """
     Parses a Grafana timestamp string (milliseconds since epoch) into a UTC datetime object.
