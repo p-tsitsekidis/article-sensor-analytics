@@ -1,0 +1,10 @@
+apiVersion: 1
+
+datasources:
+  - name: Thesis API
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    isDefault: true
+    jsonData:
+      url: https://article-sensor-analytics.onrender.com
+      authentication: none
