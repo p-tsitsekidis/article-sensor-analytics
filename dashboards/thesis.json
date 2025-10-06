@@ -1,0 +1,1184 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 913358537068544,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "description": "This panel provides the average readings by area.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.2,
+            "drawStyle": "bars",
+            "fillOpacity": 56,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "displayName": "US EPA AQI",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-yellow",
+                "value": 50
+              },
+              {
+                "color": "dark-orange",
+                "value": 100
+              },
+              {
+                "color": "dark-red",
+                "value": 150
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "1",
+              "text": "timefield",
+              "type": "timestamp_epoch"
+            },
+            {
+              "selector": "0",
+              "text": "value",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "datapoints",
+          "source": "url",
+          "type": "json",
+          "url": "/api/area_filtered_readings?area=$area&primary_tag=$primary_tag&secondary_tag=$secondary_tag&from=$__from&to=$__to",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Readings by Area",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": true,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Affected Dates"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "pub_datetime",
+              "text": "Published DateTime",
+              "type": "string"
+            },
+            {
+              "selector": "title",
+              "text": "Title",
+              "type": "string"
+            },
+            {
+              "selector": "url",
+              "text": "URL",
+              "type": "string"
+            },
+            {
+              "selector": "primary_tag",
+              "text": "Primary Tag",
+              "type": "string"
+            },
+            {
+              "selector": "secondary_tag",
+              "text": "Secondary Tag",
+              "type": "string"
+            },
+            {
+              "selector": "dates",
+              "text": "Affected Dates",
+              "type": "string"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "/api/area_article_urls?area=${area}&primary_tag=${primary_tag}&secondary_tag=${secondary_tag}&from=${__from}&to=${__to}",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Area-Relevant Article Information",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Affected Dates": 0,
+              "Primary Tag": 4,
+              "Published DateTime": 1,
+              "Secondary Tag": 5,
+              "Title": 2,
+              "URL": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "description": "This panel shows the daily average readings for the sensor the user picked. The \"area\" filter does not work on this panel.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.2,
+            "drawStyle": "bars",
+            "fillOpacity": 56,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "displayName": "US EPA AQI",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-yellow",
+                "value": 50
+              },
+              {
+                "color": "dark-orange",
+                "value": 100
+              },
+              {
+                "color": "dark-red",
+                "value": 150
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "value"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "1",
+              "text": "time_field",
+              "type": "timestamp_epoch"
+            },
+            {
+              "selector": "0",
+              "text": "value",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "datapoints",
+          "source": "url",
+          "type": "json",
+          "url": "/api/filtered_readings?sensor=$sensor&primary_tag=$primary_tag&secondary_tag=$secondary_tag&from=$__from&to=$__to",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        },
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "refId": "B",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Individual Sensors",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": true,
+        "showHeader": true
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "pub_datetime",
+              "text": "Published DateTime",
+              "type": "string"
+            },
+            {
+              "selector": "title",
+              "text": "Title",
+              "type": "string"
+            },
+            {
+              "selector": "url",
+              "text": "URL",
+              "type": "string"
+            },
+            {
+              "selector": "primary_tag",
+              "text": "Primary Tag",
+              "type": "string"
+            },
+            {
+              "selector": "secondary_tag",
+              "text": "Secondary Tag",
+              "type": "string"
+            },
+            {
+              "selector": "dates",
+              "text": "Affected Dates",
+              "type": "string"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "/api/sensor_article_urls?sensor=${sensor}&primary_tag=${primary_tag}&secondary_tag=${secondary_tag}&from=${__from}&to=${__to}",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Sensor-Relevant Article Information",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Affected Dates": 0,
+              "Primary Tag": 4,
+              "Published DateTime": 1,
+              "Secondary Tag": 5,
+              "Title": 2,
+              "URL": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "US EPA AQI",
+          "mappings": [],
+          "max": 200,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-yellow",
+                "value": 50
+              },
+              {
+                "color": "dark-orange",
+                "value": 100
+              },
+              {
+                "color": "dark-red",
+                "value": 150
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "id": 4,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "0",
+              "text": "value",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "datapoints",
+          "source": "url",
+          "type": "json",
+          "url": "/api/average_2025",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "2025 Average US EPA AQI Reading",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "displayName": "US EPA AQI",
+          "mappings": [],
+          "max": 200,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "dark-yellow",
+                "value": 50
+              },
+              {
+                "color": "dark-orange",
+                "value": 100
+              },
+              {
+                "color": "dark-red",
+                "value": 150
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "id": 3,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "0",
+              "text": "value",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "datapoints",
+          "source": "url",
+          "type": "json",
+          "url": "/api/average_2024",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "2024 Average US EPA AQI Reading",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "cezrqufqpp6v4e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 5,
+        "y": 21
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-17940193463.patch2",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "label",
+              "text": "Tag",
+              "type": "string"
+            },
+            {
+              "selector": "value",
+              "text": "Value",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "eeuz55xw0gf0ge"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$",
+          "source": "url",
+          "type": "json",
+          "url": "/api/primary_tag_piechart?from=${__from}&to=${__to}",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Primary Tag Pie Chart",
+      "type": "piechart"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "Trion Navarchon",
+          "value": "Trion Navarchon"
+        },
+        "description": "Readings of the sensor",
+        "name": "sensor",
+        "options": [
+          {
+            "selected": false,
+            "text": "Paralia",
+            "value": "Paralia"
+          },
+          {
+            "selected": false,
+            "text": "Gymnasio Ovryas",
+            "value": "Gymnasio Ovryas"
+          },
+          {
+            "selected": false,
+            "text": "Dimotiko Saravaliou",
+            "value": "Dimotiko Saravaliou"
+          },
+          {
+            "selected": false,
+            "text": "Lefka",
+            "value": "Lefka"
+          },
+          {
+            "selected": false,
+            "text": "Demenika",
+            "value": "Demenika"
+          },
+          {
+            "selected": false,
+            "text": "New Port of Patras 2024_V2",
+            "value": "New Port of Patras 2024_V2"
+          },
+          {
+            "selected": false,
+            "text": "PANSEN_Patras_Psahou",
+            "value": "PANSEN_Patras_Psahou"
+          },
+          {
+            "selected": false,
+            "text": "15 Dimotiko Patras",
+            "value": "15 Dimotiko Patras"
+          },
+          {
+            "selected": false,
+            "text": "PANSENS-KETX",
+            "value": "PANSENS-KETX"
+          },
+          {
+            "selected": true,
+            "text": "Trion Navarchon",
+            "value": "Trion Navarchon"
+          },
+          {
+            "selected": false,
+            "text": "PANSEN_PATRA_PSILALONIA",
+            "value": "PANSEN_PATRA_PSILALONIA"
+          },
+          {
+            "selected": false,
+            "text": "Germanou",
+            "value": "Germanou"
+          },
+          {
+            "selected": false,
+            "text": "Kritika_2024",
+            "value": "Kritika_2024"
+          },
+          {
+            "selected": false,
+            "text": "PANSEN_PATRA_AROI",
+            "value": "PANSEN_PATRA_AROI"
+          },
+          {
+            "selected": false,
+            "text": "PANSEN_PATRA_LAQS_AGIASOFIA",
+            "value": "PANSEN_PATRA_LAQS_AGIASOFIA"
+          },
+          {
+            "selected": false,
+            "text": "64 Dimotiko Patras 2024",
+            "value": "64 Dimotiko Patras 2024"
+          },
+          {
+            "selected": false,
+            "text": "Agyia_2024",
+            "value": "Agyia_2024"
+          },
+          {
+            "selected": false,
+            "text": "Kato Sichena",
+            "value": "Kato Sichena"
+          },
+          {
+            "selected": false,
+            "text": "49 Dimotiko Patras 2024",
+            "value": "49 Dimotiko Patras 2024"
+          },
+          {
+            "selected": false,
+            "text": "Kastelokampos",
+            "value": "Kastelokampos"
+          },
+          {
+            "selected": false,
+            "text": "University of Patras",
+            "value": "University of Patras"
+          },
+          {
+            "selected": false,
+            "text": "Rio 2024",
+            "value": "Rio 2024"
+          },
+          {
+            "selected": false,
+            "text": "FORTH/ICE-HT",
+            "value": "FORTH/ICE-HT"
+          },
+          {
+            "selected": false,
+            "text": "ICE/ FORTH",
+            "value": "ICE/ FORTH"
+          },
+          {
+            "selected": false,
+            "text": "Platani",
+            "value": "Platani"
+          }
+        ],
+        "query": "Paralia, Gymnasio Ovryas, Dimotiko Saravaliou, Lefka, Demenika, New Port of Patras 2024_V2, PANSEN_Patras_Psahou, 15 Dimotiko Patras, PANSENS-KETX, Trion Navarchon, PANSEN_PATRA_PSILALONIA, Germanou, Kritika_2024, PANSEN_PATRA_AROI, PANSEN_PATRA_LAQS_AGIASOFIA, 64 Dimotiko Patras 2024, Agyia_2024, Kato Sichena, 49 Dimotiko Patras 2024, Kastelokampos, University of Patras, Rio 2024, FORTH/ICE-HT, ICE/ FORTH, Platani",
+        "type": "custom"
+      },
+      {
+        "allValue": "All",
+        "current": {
+          "text": [
+            "Δημόσια Γεγονότα"
+          ],
+          "value": [
+            "Δημόσια Γεγονότα"
+          ]
+        },
+        "includeAll": true,
+        "multi": true,
+        "name": "primary_tag",
+        "options": [
+          {
+            "selected": true,
+            "text": "Δημόσια Γεγονότα",
+            "value": "Δημόσια Γεγονότα"
+          },
+          {
+            "selected": false,
+            "text": "Καιρικά και Φυσικά Φαινόμενα",
+            "value": "Καιρικά και Φυσικά Φαινόμενα"
+          },
+          {
+            "selected": false,
+            "text": "Μεταφορές και Κυκλοφορία",
+            "value": "Μεταφορές και Κυκλοφορία"
+          },
+          {
+            "selected": false,
+            "text": "Ρύπανση και Περιβαλλοντικά Συμβάντα",
+            "value": "Ρύπανση και Περιβαλλοντικά Συμβάντα"
+          }
+        ],
+        "query": "Δημόσια Γεγονότα,Καιρικά και Φυσικά Φαινόμενα,Μεταφορές και Κυκλοφορία,Ρύπανση και Περιβαλλοντικά Συμβάντα",
+        "type": "custom"
+      },
+      {
+        "allValue": "All",
+        "current": {
+          "text": "$__all",
+          "value": "$__all"
+        },
+        "includeAll": true,
+        "name": "area",
+        "options": [
+          {
+            "selected": false,
+            "text": "South",
+            "value": "South"
+          },
+          {
+            "selected": false,
+            "text": "Center",
+            "value": "Center"
+          },
+          {
+            "selected": false,
+            "text": "North",
+            "value": "North"
+          }
+        ],
+        "query": "South,Center,North",
+        "type": "custom"
+      },
+      {
+        "allValue": "All",
+        "current": {
+          "text": [
+            "$__all"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "includeAll": true,
+        "multi": true,
+        "name": "secondary_tag",
+        "options": [
+          {
+            "selected": false,
+            "text": "Αστική Ρύπανση",
+            "value": "Αστική Ρύπανση"
+          },
+          {
+            "selected": false,
+            "text": "Βιομηχανικές Εκπομπές",
+            "value": "Βιομηχανικές Εκπομπές"
+          },
+          {
+            "selected": false,
+            "text": "Οικιακές Εκπομπές",
+            "value": "Οικιακές Εκπομπές"
+          },
+          {
+            "selected": false,
+            "text": "Φωτιές/Εμπρησμοί",
+            "value": "Φωτιές/Εμπρησμοί"
+          },
+          {
+            "selected": false,
+            "text": "Περιβαλλοντικές Καταστροφές",
+            "value": "Περιβαλλοντικές Καταστροφές"
+          },
+          {
+            "selected": false,
+            "text": "Αθλητικές Εκδηλώσεις",
+            "value": "Αθλητικές Εκδηλώσεις"
+          },
+          {
+            "selected": false,
+            "text": "Πολιτικές Ομιλίες",
+            "value": "Πολιτικές Ομιλίες"
+          },
+          {
+            "selected": false,
+            "text": "Συναυλίες/Φεστιβάλ",
+            "value": "Συναυλίες/Φεστιβάλ"
+          },
+          {
+            "selected": false,
+            "text": "Πορείες/Διαμαρτυρίες",
+            "value": "Πορείες/Διαμαρτυρίες"
+          },
+          {
+            "selected": false,
+            "text": "Εορταστικές και Τελετουργικές Εκδηλώσεις",
+            "value": "Εορταστικές και Τελετουργικές Εκδηλώσεις"
+          },
+          {
+            "selected": false,
+            "text": "Κυκλοφοριακή Συμφόρηση",
+            "value": "Κυκλοφοριακή Συμφόρηση"
+          },
+          {
+            "selected": false,
+            "text": "Διακοπές Οδικής Κυκλοφορίας",
+            "value": "Διακοπές Οδικής Κυκλοφορίας"
+          },
+          {
+            "selected": false,
+            "text": "Τροχαία Ατυχήματα",
+            "value": "Τροχαία Ατυχήματα"
+          },
+          {
+            "selected": false,
+            "text": "Επιβολή Κυκλοφοριακών Μέτρων",
+            "value": "Επιβολή Κυκλοφοριακών Μέτρων"
+          },
+          {
+            "selected": false,
+            "text": "Καιρικές Συνθήκες",
+            "value": "Καιρικές Συνθήκες"
+          },
+          {
+            "selected": false,
+            "text": "Φυσικές Καταστροφές",
+            "value": "Φυσικές Καταστροφές"
+          },
+          {
+            "selected": false,
+            "text": "Σκόνη",
+            "value": "Σκόνη"
+          },
+          {
+            "selected": false,
+            "text": "Ακραία Μετεωρολογικά Φαινόμενα",
+            "value": "Ακραία Μετεωρολογικά Φαινόμενα"
+          }
+        ],
+        "query": "Αστική Ρύπανση,Βιομηχανικές Εκπομπές,Οικιακές Εκπομπές,Φωτιές/Εμπρησμοί,Περιβαλλοντικές Καταστροφές,Αθλητικές Εκδηλώσεις,Πολιτικές Ομιλίες,Συναυλίες/Φεστιβάλ,Πορείες/Διαμαρτυρίες,Εορταστικές και Τελετουργικές Εκδηλώσεις,Κυκλοφοριακή Συμφόρηση,Διακοπές Οδικής Κυκλοφορίας,Τροχαία Ατυχήματα,Επιβολή Κυκλοφοριακών Μέτρων,Καιρικές Συνθήκες,Φυσικές Καταστροφές,Σκόνη,Ακραία Μετεωρολογικά Φαινόμενα",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-12-30T22:00:00.000Z",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Dynamic Sensor and Article Data Dashboard",
+  "uid": "beiwnihkw7400b",
+  "version": 9
+}
