@@ -1,13 +1,13 @@
 # 🌍 Article & Sensor Analytics Platform
 
-**Live Demo:** [https://thesis-grafana.onrender.com](https://thesis-grafana.onrender.com)  
-Once loaded, navigate to **Dashboards → “Dynamic Sensor and Article Data Dashboard”** to explore the interactive panels that enable correlation of air quality sensor data with real-world news events. (The articles are in Greek.)
+**Live Demo:** [https://thesis-grafana.onrender.com/d/beiwnihkw7400b/dynamic-sensor-and-article-data-dashboard](https://thesis-grafana.onrender.com)  
+Feel free to play around with the filters! The pipelines are not currently running and the articles are in Greek.
 
 ---
 
 ## 🧠 Overview
 
-This project bridges **environmental sensor analytics** and **AI-driven news enrichment**.
+This project bridges **environmental sensor analytics** and **AI-driven news enrichment** for the city of Patras, Greece.
 It was developed as part of a Computer Science thesis to study how **local events** influence **air quality**.
 The system uses pipelines, enriches, and visualizes data in a full-stack architecture — from raw text and sensor readings to Grafana dashboards.
 
