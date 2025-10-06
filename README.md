@@ -1,103 +1,121 @@
-# Article & Sensor Analytics Platform
+# 🌍 Article & Sensor Analytics Platform
 
-This project correlates local news events with air quality sensor data. It includes a full scraping and enrichment pipeline, a sensor readings importer, and a Flask API designed for integration with Grafana dashboards.
-
-## Features
-
-- 📰 Article scraping and enrichment using LLMs
-- 📍 Geolocation and nearest-sensor tagging via Google Maps APIs
-- 🌫️ Automated scraping of air quality sensor data (PurpleAir)
-- 📊 REST API for time series data, article metadata, tag distribution
-- 🧩 MongoDB backend, Grafana-compatible output
+**Live Demo:** [https://thesis-grafana.onrender.com](https://thesis-grafana.onrender.com)  
+Once loaded, navigate to **Dashboards → “Dynamic Sensor and Article Data Dashboard”** to explore the interactive panels that enable correlation of air quality sensor data with real-world news events. (The articles are in Greek.)
 
 ---
 
-## Components
+## 🧠 Overview
 
-### `articles_pipeline.py`
-- Scrapes local news articles
-- Enriches with LLMs (description, relevancy, tags, dates)
-- Geocodes locations and assigns to nearby sensors
-- Saves enriched articles to MongoDB
-
-### `sensor_readings_pipeline.py`
-- Uses Selenium to download previous-day air quality sensor readings from PurpleAir
-- Parses and averages CSV data
-- Inserts daily readings into MongoDB
-
-### `flask_api.py`
-- Serves data to Grafana dashboards via REST API
-- Supports filtering by area, sensor, date range, tags
-- Includes endpoints for:
-  - Filtered time series data
-  - Relevant article tables
-  - Tag pie charts
-  - Year-based averages (2024, 2025)
+This project bridges **environmental sensor analytics** and **AI-driven news enrichment**.
+It was developed as part of a Computer Science thesis to study how **local events** influence **air quality**.
+The system uses pipelines, enriches, and visualizes data in a full-stack architecture — from raw text and sensor readings to Grafana dashboards.
 
 ---
 
-## Setup
+## 🚀 Features
+
+- 📰 **Article Enrichment:** Scrapes and classifies local news using LLMs (via LM Studio)
+- 📍 **Geospatial Mapping:** Geocodes article locations and links them to nearby air sensors
+- 🌫️ **Environmental Data:** Automates daily PurpleAir data ingestion with Selenium
+- 🧩 **MongoDB Integration:** Centralized data storage for analytics and dashboards
+- 📊 **Grafana API Integration:** Provides REST endpoints for real-time visualization
+- ⚙️ **Docker + Render Deployment:** Fully containerized and live-hosted system
+
+---
+
+## 🗂️ Repository Structure
+
+| Folder / File | Description |
+|----------------|-------------|
+| `articles_pipeline.py` | Scrapes, enriches, and tags local news articles using LLMs |
+| `sensor_readings_pipeline.py` | Collects and aggregates daily PurpleAir PM2.5 readings |
+| `flask_api.py` | Flask application serving data to Grafana |
+| `dashboards/` | Contains exported Grafana dashboards (`thesis.json`) |
+| `prompts/` | LLM prompts for text enrichment (e.g., tagging, summarization) |
+| `provisioning/` | Grafana provisioning files for dashboards |
+| `requirements.txt` | Full dependency list |
+| `requirements-api.txt` | Minimal dependencies for API-only deployment |
+| `LICENSE` | MIT license |
+| `.env.example` | Template for environment configuration |
+
+---
+
+## ⚙️ Setup
 
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/p-tsitsekidis/article-sensor-analytics.git
 cd article-sensor-analytics
 ```
 
 ### 2. Create a Virtual Environment
-
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # On Windows: .venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
-
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Set Up Environment Variables
-
-Create a `.env` file using the provided template:
-
+### 4. Configure Environment Variables
+Copy and edit the template:
 ```bash
 cp .env.example .env
 ```
-
-Update the file with your actual configuration:
-- MongoDB URI and collection names
-- LM Studio URL and model IDs
-- Google API Key for Places and Geocoding
-
----
-
-## Grafana Integration
-
-The Flask API is designed to power a multi-panel Grafana dashboard:
-
-- `/api/filtered_readings`: Sensor-level time series with tag filtering  
-- `/api/area_filtered_readings`: Area-level time series  
-- `/api/sensor_article_urls`: Articles relevant to a sensor  
-- `/api/area_article_urls`: Articles relevant to an area  
-- `/api/primary_tag_piechart`: Pie chart of tag distribution  
-- `/api/average_2024` and `/api/average_2025`: Yearly reading averages  
+Update with your credentials:
+- MongoDB URI and collection names  
+- LM Studio URL and model IDs  
+- Google API Key (for Geocoding & Places)
 
 ---
 
-## Requirements
+## 🔗 API Endpoints
 
-- Python 3.10+
-- MongoDB running locally or remotely
-- Chrome WebDriver (for Selenium)
-- LM Studio (for local LLM completions) — https://lmstudio.ai/
-- Google Cloud API access (Places + Geocoding) — https://map.purpleair.com/
-
-See `requirements.txt` for the full Python package list.
+| Endpoint | Description |
+|-----------|-------------|
+| `/api/filtered_readings` | Sensor-level time series filtered by tag |
+| `/api/area_filtered_readings` | Area-level averages |
+| `/api/sensor_article_urls` | Relevant articles for a specific sensor |
+| `/api/area_article_urls` | Relevant articles for a given area |
+| `/api/primary_tag_piechart` | Distribution of primary tags |
+| `/api/average_2024`, `/api/average_2025` | Yearly sensor averages |
 
 ---
 
-## License
+## 📊 Grafana Integration
 
-This project is licensed under the MIT License.
+The Flask API powers a dynamic Grafana dashboard containing:
+- Time-series line charts of PM2.5 data  
+- Tag frequency pie charts  
+- Interactive article tables with live URLs  
+- Area-based aggregations for multiple sensors
+
+To access the live dashboard:  
+👉 [https://thesis-grafana.onrender.com](https://thesis-grafana.onrender.com)  
+Then open **Dynamic Sensor and Article Data Dashboard** under *Dashboards*.
+
+---
+
+## 🧠 Technologies Used
+
+| Layer | Stack |
+|-------|--------|
+| **Backend** | Python (Flask, Requests, PyMongo, Pandas) |
+| **Database** | MongoDB Atlas |
+| **Frontend (Visualization)** | Grafana + Infinity Plugin |
+| **AI/LLMs** | LM Studio (local inference) |
+| **Deployment** | Render (Docker-based) |
+| **Automation** | cron/Task scheduler |
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+© 2025 Petros Tsitsekidis. All rights reserved.
