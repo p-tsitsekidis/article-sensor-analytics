@@ -1,6 +1,6 @@
 # 🌍 Article & Sensor Analytics Platform
 
-**Live Demo:** [https://thesis-grafana.onrender.com/d/beiwnihkw7400b/dynamic-sensor-and-article-data-dashboard](https://thesis-grafana.onrender.com)  
+**Live Demo:** [https://thesis-grafana.onrender.com](https://thesis-grafana.onrender.com/d/beiwnihkw7400b/dynamic-sensor-and-article-data-dashboard)  
 Feel free to play around with the filters! The pipelines are not currently running and the articles are in Greek.
 
 ---
